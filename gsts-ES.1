@@ -1,0 +1,231 @@
+.TH GSTShell  2
+
+
+
+.SH NAME
+Mejora del proyecto GSTShell - Henchoz Comparín Ravera
+
+
+
+.SH SYNOPSIS
+.B GSTShell 2.0
+
+
+
+.SH COPYRIGHT
+ GSTShell is Copyright (C) 2014-2015 Free Software Foundation, Inc.	
+
+
+
+
+.SH DESCRIPTION
+GSTShell es un intérprete primitivo de lenguaje de comandos que ejecuta órdenes leídas de la entrada estándar.
+.br 
+GSTShell también incorpora algunos comandos del shell BASH como comandos internos, entre ellos cd, ls y cat,fg,bg.
+.br 
+GSTShell es un shell experimental modificado para el Trabajo Final 2014 "Ampliacion y mejora del shell experimental" de la materia Sistemas Operativos de FRCU - UTN.
+
+
+
+
+.SH PARAMETERS
+.B Variables
+
+.B usuarioActual
+.br
+          Mantiene el nombre del usuario actual que se encuentra
+.br
+          trabajando en el equipo.
+.PP
+.B hostActual
+.br
+          Guarda el nombre del equipo.
+.PP
+.B directorio
+.br
+          Mantiene la ruta del directorio de trabajo actual.
+.PP
+.B olddir
+.br 
+          Mantiene la ruta del directorio de trabajo anterior al 
+.br
+          actual.
+.PP
+.B home
+.br
+          Mantiene la ruta del directorio Home del Sistema de Archivos.
+.PP
+.B homeMasUsuarioActual
+.br
+          Guarda la ruta del directorio del usuario actual en el 
+.br
+          Sistema de Archivos.
+.PP
+.B operador
+.br
+          Almacena los operadores "|", ">", ">>" en caso de existir 
+.br
+          redireccionamiento o pipe.
+          
+
+
+.SH REDIRECTION
+.B Redirección de Salida estándar
+.br
+GSTShell posee dos formas para la redirección de la salida estándar: 
+.br
+[n] > arch
+.br
+        Guarda la salida del comando "n" en el archivo "arch". Si el
+.br
+        archivo no existe, lo crea, y si existe lo reescribe.
+.br
+[n] >> arch
+.br
+         Guarda la salida del comando "n" en el archivo "arch". Si el
+.br
+         archivo no existe, lo crea, y si existe lo agrega al final.
+
+
+
+
+.SH PIPE
+[n] | [m]
+.br
+El comando pipe envía la salida del comando "n" como entrada al comando "m".
+
+
+
+
+
+.SH SHELL BUILTIN COMMANDS
+
+.B mils [ruta]
+.br
+          Lista en pantalla los ficheros del directorio indicado por  
+.br       
+	  ruta y la cantidad encontrada, ordenados alfabéticamente.
+.br
+	  De no existir una ruta, realiza dicha operación sobre el 
+.br 
+	  directorio actual.
+.PP
+.B mils -l [ruta] 
+.br
+          Lista en pantalla los archivos del directorio actual en
+.br
+          formato completo (permisos, usuario y
+.br 
+          grupo, tamaño, última fecha de modificación y nombre)
+.br 
+          y con color. Muestra la cantidad encontrada y el total 
+.br
+	     incluyendo subcarpetas.
+.br
+          Si no se le pasa el parámetro "ruta" lista el directorio
+.br
+          actual, en caso contrario lista el directorio que se 
+.br
+          especifique en "ruta". La ruta puede ser absoluta o relativa.
+.br
+          Lista ordenado y no muestra archivos ocultos.
+.PP
+.B mils -a [ruta]
+.br
+          Lista en orden alfabético los archivos del  directorio actual
+.br
+          con color, incluyendo los archivos ocultos. 
+.br
+          Si se le pasa el parámetro "ruta", lista el directorio que se
+.br       
+          especifique en "ruta". La ruta puede ser absoluta o
+.br
+          relativa.       
+.PP
+.B mils -f [ruta]
+.br
+          Lista sin orden y sin color, los archivos del directorio
+.br
+	     indicado por "ruta" incluyendo los ocultos. 
+.br
+          Si no se le pasa el parámetro "ruta", opera sobre el
+.br
+          directorio actual.
+.br
+          La ruta puede ser absoluta o relativa.
+.PP
+.B mipwd
+.br 
+          Muestra en pantalla la ruta del directorio actual de trabajo.
+.PP
+.B micd [r]
+.br
+          Cambia el directorio de trabajo actual dependiendo del valor
+.br
+          de "r".
+.br
+          Si "r" es una ruta absoluta o relativa cambia el directorio
+.br
+          actual a esta ruta (si es relativa toma como base la ruta
+.br
+          del directorio actual).
+.br
+          Si "r" es igual a "." mantiene el directorio actual.
+.br      
+          Si "r" es igual a ".." cambia el directorio actual al 
+.br
+          directorio padre del directorio actual.
+.br
+          Si "r" es igual a "-" cambia el directorio actual al
+.br
+          directorio de trabajo anterior.
+.br
+          Si "r" es igual a "~" cambia el directorio actual
+.br
+          al directorio HOME. 
+.PP
+.B mikill [señal] [pid]
+.br 
+          Envía "señal" al proceso de pid "pid". Ambos parámetros
+.br
+          deben ser numéricos. 
+.PP
+.B micat [archivo1] [archivo2]
+.br 
+          Concatena "archivo1" con "archivo2" y los muestra en
+.br
+          pantalla. 
+.br
+          Si solo se le pasa un archivo, lo muestra en pantalla.
+.br
+          Si no se le pasa ningún archivo, lee de la entrada
+.br
+          estándar y muestra lo leído.
+
+.PP
+.B mibg [pid]
+          Envía "pid" a ejecutarse en segundo plano.
+
+.PP
+.B mifg [pid]
+          Trae "pid" a primer plano y reanuda.
+.br
+          En caso que no se le pase ningún "pid" como
+.br
+          parámetro, traerá a primer plano y renaudará
+.br       
+          el último proceso afectado por "mibg".
+
+
+.SH COPYRIGHT
+Copyright  ©  2012  Free Software Foundation, Inc.  License GPLv3+: GNU
+
+
+.SH AUTHORS
+Julieta Comparin - comparinjulieta@gmail.com
+.br 
+Leopoldo Henchoz - leopoldohenchoz@hotmail.com
+.br 
+Pablo Ravera - pablo.arf@hotmail.com
+
+

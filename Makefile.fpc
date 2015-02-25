@@ -1,0 +1,7 @@
+[target]
+programs=TDALista shell Auxiliares tipos Inicializadores funciones redireccionObjeto
+units=TDALista tipos Inicializadores funciones Auxiliares redireccionObjeto
+
+[compiler]
+version=2.4.0
+

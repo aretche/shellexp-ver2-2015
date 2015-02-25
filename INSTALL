@@ -1,0 +1,30 @@
+INSTALL - Instrucciones de instalación
+
+
+ESPAÑOL - SPANISH
+
+1) Descargue los siguientes archivos de la carpeta de Google Drive:
+Tipos.pas ; TDALista.pas ; Shell.pas ; Auxiliares.pas ; Funciones.pas ; Inicializadores.pas ; gsts-ES.1 ; Makefile
+
+2) Abra una terminal y ejecute "sudo make install Makefile" o bien sino posee derechos de administrador "make install Makefile"
+
+3) En la misma terminal ejecute "sudo cp gsts-ES.1 /usr/share/man/es/man1/"
+
+4) En la misma terminal, sin moverse de carpeta, ejecute "./shell".
+
+5) Para mas información ejecute "man gsts-ES" para el manual.
+
+
+ACLARACION
+Si usted tiene problemas de instalacion debido a la arquitectura de su sistema operativo, realice los siguientes pasos:
+
+1) Desde el terminal de linux ubiquese en la direccion donde se encuentra la carpeta del proyecto (sin ingresar a esta)
+2) ingrese luego: chmod 777 "carpetaDeProyecto"
+3) A continuacion ingrese a la carpeta del proyecto.
+4) Luego escriba en el terminal: sudo fpcmake -T i386-linux Makefile.fpc 
+   (Esta instruccion cambia la configuracion del programa para que corra en una arquitectura de 32 bit).
+   o bien escriba en el terminal: sudo fpcmake -T x86_64-linux Makefile.fpc 
+    (Esta instruccion cambia la configuracion del programa para que corra en una arquitectura de 64 bit).
+5) Finalmente vuelva a repetir los pasos de la instalacion que estann detallados mas arriba. 
+
+
